@@ -1,0 +1,111 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>管理平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link rel="stylesheet" href="/stylesheets/common.css" type="text/css" />
+    <%= javascript_include_tag 'dropmenu' %>
+
+</head>
+<body>
+
+    <%if params[:type] =='web'%>
+    <h2 class="h2">网站管理</h2>
+    <%end%>
+     <%if params[:type] =='system'%>
+    <h2 class="h2">系统管理</h2>
+    <%end%>
+    <%if params[:type] =='report'%>
+    <h2 class="h2">分销系统管理</h2>
+    <%end%>
+    <div class="modules" id="modules">
+
+
+
+
+        <%if params[:type] =='web'%>
+          <h4 class=" clicker"><span>网站管理</span></h4>
+        <ul>
+            <li>
+                <a href="/articles" target="main">文章管理</a>
+            </li>
+            <li>
+                <a HREF="/images_indices" target="main">首页滚动图片</a>
+            </li>
+            <li>
+                <a href="/web_infos" target="main">网站信息维护</a>
+            </li>
+
+            <li>
+                <a href="/courses" target="main">课程管理</a>
+            </li>
+            <li>
+                <a href="/applies" target="main">在线报名</a>
+            </li>
+            <li>
+                <a href="/course_types" target="main">课程类别</a>
+            </li>
+            <li>
+                <a href="/forums" target="main">版块管理</a>
+            </li>
+            <%if session[:login_name] =='huanbao'%>
+            <li>
+                <a href="/page_temps" target="main">模板管理</a>
+            </li>
+            <li>
+                <a href="##" id="filemanager" target="main">静态资源管理</a>
+            </li>
+            <%end%>
+            <!--<li>
+            <a href="/friend_links">友情链接管理</a>
+        </li>
+        -->
+        <li>
+            <a href="/users" target="main">用户管理</a>
+        </li>
+        <li>
+            <a href="/adds" target="main">广告管理</a>
+        </li>
+
+        <li>
+            <%=link_to "清除缓存","##",:id=>"clean_cache"%></li>
+    </ul>
+    <ul>
+         <h4 class=" clicker"><span>网站管理</span></h4>
+            <li>
+                <a href="/question_bases/new" target="main">开始问卷</a>
+                <ul>
+                    <li>
+                        <a HREF="/questions" target="main">问卷管理</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    <%end%>
+
+    <%if params[:type] =='system'%>
+
+    <ul>
+        <li class="current">
+            <a href="/users" target="main">用户管理</a>
+        </li>
+    </ul>
+    <%end%>
+
+    <%if params[:type] =='report'%>
+
+    <ul>
+        <li class="current">
+            <a href="/users" target="main">单据设计</a>
+        </li>
+    </ul>
+    <%end%>
+
+</div>
+</body>
+</html>

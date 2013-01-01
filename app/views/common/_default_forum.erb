@@ -1,0 +1,56 @@
+<div id="content">
+      <%=  render "common/left"%>
+
+    <div id="right">
+      <div class="activity_top">
+        <div class="activity_title">
+          <img src="/image/activity/act_10.jpg">
+          <span><%=@forum.name%></span>
+        </div>
+        <div class="activity_location">
+          <%=forum_tab @forum%>
+        </div>
+        <div class="activity_line">
+          <img src="/image/activity/act_01.jpg"></div>
+      </div>
+
+      <div class="story_banner">
+        <%if @forum and @forum.picture1 and @forum.picture1!=""%>
+        <%= image_tag(@forum.picture1,:width=>770,:height=>95)%>
+        <%else%>
+        <img src="/image/three/story_03.jpg">
+        <%end%>
+      </div>
+      <!--右边那个图片 -->
+
+      <div class="story_news">
+        <div class="story_news_title">
+          <div class="news_title_a">
+            <img src="/image/activity/act_10.png">
+            <span><%=@forum.name%></span>
+          </div>
+          <div class="news_more">
+            <a href="#">MORE</a>
+          </div>
+        </div>
+      </div>
+
+      <ul class="right_activity_content">
+        <% @articles.each do |a|%>
+        <li>
+          <a href="/homes/articles/<%=a.id%>" title="<%=a.title%>">
+            <span>【<%=strip_html a.small_title,4,"..."%>】</span>
+            <%=a.title%>
+          </a>
+          <div class="story_pic">
+            <img src="/image/three/story_09.jpg">
+            <img src="/image/three/story_11.jpg">
+            <img src="/image/three/story_13.jpg"></div>
+        </li>
+        <%end%>
+      </ul>
+      <div class="pager">
+                  <%= will_paginate @articles,:previous_label => '上一页', :next_label => '下一页',:renderer => 'PaginationDetailLinkRenderer'   %>
+      </div>
+    </div>
+  </div>

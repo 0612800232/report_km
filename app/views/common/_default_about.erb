@@ -1,0 +1,53 @@
+<div id="content">
+  <%=  render "common/left"%></div>
+
+  <div id="right">
+    <div class="right_content">
+      <div class="about_bg">
+        <div class="about_bg_title">
+          <%=@forum.name%>
+            <span>About</span>
+          </div>
+          <div class="about_content">
+            <div class="about_pic">
+              <img src="/image/about/about_03.jpg"></div>
+            <div class="about_text">
+              <%= raw Article.find_by_title("写给家长的话").context%></div>
+            </div>
+
+            <div class="about_content">
+              <div class="about_pic">
+                <img src="/image/about/about_06.jpg"></div>
+              <div class="about_text">
+                <%= raw Article.find_by_title("我们的愿景").context%></div>
+              </div>
+
+              <div class="about_content">
+                <div class="about_pic">
+                  <img src="/image/about/about_08.jpg"></div>
+                <div class="about_text">
+                  <%= raw Article.find_by_title("我们的使命").context%></div>
+                </div>
+
+                <div class="about_content">
+                  <div class="about_pic">
+                    <img src="/image/about/about_10.jpg">
+                  </div>
+                  <div class="about_text">
+                    <p><%= raw Article.find_by_title("我们的信箱").context%></p>
+                  </div>
+                </div>
+
+                  <div class="about_content">
+                    <div class="about_pic">
+                      <img src="/image/about/about_12.jpg"></div>
+                    <div class="about_text">
+                      <p><%= raw Article.find_by_title("我们的咨询电话").context%></p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>

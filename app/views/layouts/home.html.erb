@@ -1,0 +1,22 @@
+
+	<%if create_html_top%>
+		<%= raw create_html_top  %>
+	<%else%>
+		<%=  render "common/default_head"%>
+	<%end%>
+
+	<%if create_html_body%>
+		<%= raw create_html_body  %>
+	<%else%>
+		<%= yield%>
+	<%end%>
+
+	<%if create_html_foot%>
+		<%= raw create_html_foot  %>
+	<%else%>
+		<%=  render "common/default_foot"%>
+	<%end%>
+</div>
+	<%=  render "common/qq"%>
+</body>
+</html>

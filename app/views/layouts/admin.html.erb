@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<!-- saved from url=(0060)http://cktest.com:8080/salon/admin/index.htm?salon_id=s10020 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <head>
+<title>小船长cms后台管理</title>
+
+<link rel="shortcut icon" type="image/png" href="/images/favicons/favicon.png"/>
+<link rel="icon" type="image/png" href="/images/favicons/favicon.png"/>
+<link rel="apple-touch-icon" href="/images/favicons/apple.png"/>
+    <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" />
+
+    <link rel="stylesheet" href="/stylesheets/custom.css" type="text/css" />
+    <%= javascript_include_tag 'swfobject' %>
+	<%= javascript_include_tag 'jquery-1.4.2.min' %>
+	<%= javascript_include_tag 'jquery.ui.core.min' %>
+	<%= javascript_include_tag 'jquery.ui.widget.min' %>
+	<%= javascript_include_tag 'jquery.ui.tabs.min' %>
+	<%= javascript_include_tag 'jquery.tipTip.min.js' %>
+	<%= javascript_include_tag 'jquery.superfish.min' %>
+	<%= javascript_include_tag 'jquery.supersubs.min' %>
+	<%= javascript_include_tag 'jquery.validate_pack' %>
+	<%= javascript_include_tag 'jquery.nyroModal.pack' %>
+	<%#=kindeditor_javacript_include_tag%>
+	<%= javascript_include_tag 'kindeditor/kindeditor' %>
+	<%= javascript_include_tag 'kindeditor/kindeditor_config' %>
+	 <link rel="stylesheet" href="/javascripts/kindeditor/themes/default/default.css" type="text/css" />
+	<%= javascript_include_tag 'kindeditor/lang/zh_CN' %>
+<script type="text/javascript">
+function doPrint() { 
+// bdhtml=window.document.body.innerHTML; 
+// sprnstr="<!--startprint-->"; 
+// eprnstr="<!--endprint-->"; 
+// prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); 
+// alert(prnhtml)
+// prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
+// window.document.body.innerHTML=prnhtml; 
+window.print(); 
+}
+</script>	
+<script language="javascript">
+	function MyOnload(){
+		document.getElementById('all').style.display = '';
+	}
+	if (window.onload == null){
+		window.onload = MyOnload;
+	}
+</script>
+<style type="text/css"></style></head>
+<frameset rows="80,*" cols="*" framespacing="0" frameborder="no" border="0" id="all" style="">
+	<frame src="/admins/header" name="header" scrolling="no" noresize="noresize" id="header">
+    <frameset cols="160,*" id="frame">
+		<frame src="/admins/menu" name="menu" noresize="noresize" marginwidth="0" marginheight="0" frameborder="0" style="overflow-x:hidden;overflow-y:scroll;" scrolling-y="auto" target="_main">
+		<frame src="" name="main" marginwidth="0" marginheight="0" frameborder="0" scrolling="auto">    
+	</frameset>
+</frameset>
+<noframes>
+&lt;body&gt;
+&lt;/body&gt;
+</noframes>
+</html>
+
+
+
+

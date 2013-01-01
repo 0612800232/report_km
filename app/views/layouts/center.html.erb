@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+  <head>
+<title>小船长cms后台管理</title>
+
+<link rel="shortcut icon" type="image/png" href="/images/favicons/favicon.png"/>
+<link rel="icon" type="image/png" href="/images/favicons/favicon.png"/>
+<link rel="apple-touch-icon" href="/images/favicons/apple.png"/>
+    <link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" />
+
+    <link rel="stylesheet" href="/stylesheets/custom.css" type="text/css" />
+   <%= javascript_include_tag :defaults %>
+  
+  <%= javascript_include_tag 'kindeditor/kindeditor' %>
+  <%= javascript_include_tag 'kindeditor/kindeditor_config' %>
+   <link rel="stylesheet" href="/javascripts/kindeditor/themes/default/default.css" type="text/css" />
+  <%= javascript_include_tag 'kindeditor/lang/zh_CN' %>
+<script type="text/javascript">
+function doPrint() { 
+// bdhtml=window.document.body.innerHTML; 
+// sprnstr="<!--startprint-->"; 
+// eprnstr="<!--endprint-->"; 
+// prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); 
+// alert(prnhtml)
+// prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
+// window.document.body.innerHTML=prnhtml; 
+window.print(); 
+}
+</script> 
+</head> 
+<%= yield %>
+</html>

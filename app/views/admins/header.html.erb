@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>管理平台</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<link rel="stylesheet" href="/stylesheets/common.css" type="text/css" />
+	<%= javascript_include_tag 'jquery-1.4.2.min' %>
+	<script type="text/javascript" SRC="/javascripts/jquery.validate_pack.js"></script>
+	<script type="text/javascript">
+
+      $(document).ready(function(){
+	
+        /* setup navigation, content boxes, etc... */
+        <%#*Administry.setup();%>
+	
+        // validate signup form on keyup and submit
+        var validator = $("#loginform").validate({
+          rules: {
+            name: "required",
+            password: "required"
+          },
+          messages: {
+            name: "请输入登录名",
+            password: "请输入密码"
+          },
+          // the errorPlacement has to take the layout into account
+          errorPlacement: function(error, element) {
+            error.insertAfter(element.parent().find('label:first'));
+          },
+          // set new class to error-labels to indicate valid fields
+          success: function(label) {
+            // set &nbsp; as text for IE
+            label.html("&nbsp;").addClass("ok");
+          }
+        });
+
+      });
+    </script>
+</head>
+<body>
+
+	<script>
+ $(function(){
+	$(".nav-bar li").click(
+		function () {
+			$(".nav-bar li").removeClass("current");
+    		$(this).addClass("current");
+  		}
+	)
+});
+</script>
+	<div class="top-notice"></div>
+	<div class="header">
+		<div class="header-top">
+			<a href="javaScript:void(0);" class="logo">
+				<span>管理系统</span>
+			</a>
+			<ul>
+				<li>
+					<a href="http://cktest.com:8080"  target="_blank">网站首页</a>
+				</li>
+				<li>
+					<a href="http://cktest.com:8080/help/index.htm"  target="_blank">帮助中心</a>
+				</li>
+				<li>
+					<a href="#"  target="_blank">联系我们</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="nav-bar">
+			<%if session[:is_login]%>
+			<ul>
+				<li class="current">
+					<a href="/admins/menu?type=report" target="menu">分销管理</a>
+				</li>
+				<li>
+					<a href="/admins/menu?type=web" target="menu">网站管理</a>
+				</li>
+				<li>
+					<a href="/admins/menu?type=system" target="menu">系统管理</a>
+				</li>
+			</ul>
+			<%end%>
+			<div class="statusbt">
+				
+				<%if session[:is_login]%>
+				您好, <strong><%=session[:login_name]%></strong>
+				<a href="/users/logout">退出</a>
+				<%=@first_login%>
+ 				<%if @first_login %>
+				<script type="text/javascript">
+				
+				top.location.reload()
+				</script>
+				<%end%>
+
+				<%else%>
+                 
+				<form accept-charset="UTF-8" action="/users/login" class="loginform" id="loginform" method="post">
+					<span style="color:red"><%=@error_msg%></span>
+					<label for="user_login">登录名:</label>
+					<input class="inp" id="user_name" name="user[name]" size="30" type="text">
+					<label for="user_login">密码</label>
+					<input class="inp" id="user_password" label="密码" name="user[password]" size="30" type="password">
+					<input class="button btn-t3" id="user_submit" name="commit" type="submit" value="登录"></form>
+
+				<%end%></div>
+		</div>
+	</div>
+</body>
+</html>
