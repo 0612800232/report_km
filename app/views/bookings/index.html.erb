@@ -1,0 +1,70 @@
+
+<div class="main-content">
+     <div class="main-title  mb10 mt10">
+            <h3 class="ion-t1">托运单列表</h3>
+            <div class="btn-box-t1 fr">
+            <button class="t1" type="button" onclick="window.location='<%=new_booking_path %>'">
+                <span>新增运货单  </span>
+            </button>
+        </div>
+     </div>
+         <form name="queryForm" action="http://www.5imeifa.com/salon/admin/customer/customer_list.htm" method="post">
+    <div class="form-box ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div class="form-box-c2">
+            <table>
+                <tbody><tr>
+                   <th>收货单位 ：</th>
+                    <td>
+                        <input type="text" class="inp" style="width:100px;" name="attn_unit" value="">
+                    </td>
+                    <th>收货人地址 ：</th>
+                    <td>
+                        <input type="text" class="inp" style="width:100px;" name="add" value="">
+                    </td>
+                    <th>收货人：</th>
+                    <td>
+                       <input type="text" class="inp" style="width:80px;" name="recipients" value="">
+                    </td>
+                    <td>
+                        <button class="btn-t4" type="submit">查找</button>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="list-box">
+        <table>
+            <tr class="goods-list-title">
+                <th>收货单位</th>
+                <th>收货人地址</th>
+                <th>收货人</th>
+                <th>收货人电话</th>
+                <th>日期</th>
+                <th>托运方式 </th>
+                <th>结款方式</th>
+                <th>填单人</th>
+                <th>操作</th>
+            </tr>
+              <% @bookings.each do |booking| %>
+              <tr>
+                <td><%= booking.attn_unit %></td>
+                <td><%= booking.add %></td>
+                <td><%= booking.recipients %></td>
+                <td><%= booking.tel %></td>
+                <td><%= booking.date %></td>
+                <td><%= booking.check_mode %></td>
+                <td><%= booking.remittances %></td>
+                <td><%= booking.preared %></td>
+                <td><%= link_to '显示', booking %>
+                <%= link_to '编辑', edit_booking_path(booking) %>
+                <%= link_to '打印', print_bookings_path({"id"=>booking.id}) %>
+               <%= link_to '删除', booking, :confirm => 'Are you sure?', :method => :delete %></td>
+              </tr>
+              <%end%>
+
+              </table>
+    </div>
+        </form>
+    
+</div>

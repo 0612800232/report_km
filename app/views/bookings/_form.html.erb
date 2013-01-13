@@ -1,0 +1,273 @@
+<link rel="stylesheet" type="text/css" href="/calendar/calendar-brown.css?t=2.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.ui.base.css">
+<script type="text/javascript" src="/calendar/calendar.js?t=2.js"></script>
+<script type="text/javascript" src="/calendar/calendar-chs.js?t=2.js"></script>
+<script type="text/javascript" src="/calendar/calendar-setup.js?t=2.js"></script>
+<script type="text/javascript" SRC="/javascripts/jquery.validate_pack.js"></script>
+<div class="form-box ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
+      <a href="#tabs-1">运货单信息</a>
+    </li>
+  </ul>
+
+  <%= form_for(@booking) do |f| %>
+  <% if @booking.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@booking.errors.count, "error") %>prohibited this booking from being saved:</h2>
+
+    <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %></li>
+      <% end %></ul>
+  </div>
+  <% end %>
+  <div class="form-box-c2">
+    <table>
+      <tr>
+        <th>收货单位：</th>
+        <td>
+          <input type="text" class="inp w300 required" name="booking[attn_unit]" value="<%=@booking.attn_unit%>" id="booking[attn_unit]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>收货单位地址：</th>
+        <td>
+          <input type="text" class="inp w300 required"  name="booking[add]" value="<%=@booking.add%>" id="booking[add]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>收货人：</th>
+        <td>
+          <input type="text" class="inp w300 required" name="booking[recipients]" value="<%=@booking.recipients%>" id="booking[recipients]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>收货人电话：</th>
+        <td>
+          <input type="text" class="inp w300 required" name="booking[tel]" value="<%=@booking.tel%>" id="booking[tel]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>收货日期：</th>
+        <td>
+          <input type="text" class="inp w300" name="booking[date]" value="<%=@booking.date%>" id="booking[date]" readonly>
+          <span class="red">*</span>
+        </td>
+        <script type="text/javascript">
+                        Calendar.setup({
+                          inputField : "booking[date]",
+                          ifFormat   : "%Y-%m-%d",
+                          align      : "Tl"
+                        });
+                      </script>
+      </tr>
+      <tr>
+        <th>托运方式：</th>
+        <td>
+          <input type="text" class="inp w300" name="booking[check_mode]" value="<%=@booking.attn_unit%>" id="booking[check_mode]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>结款方式：</th>
+        <td>
+          <input type="text" class="inp w300" name="booking[remittances]" value="<%=@booking.remittances%>" id="booking[remittances]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>填单人：</th>
+        <td>
+          <input type="text" class="inp w300 required" name="booking[preared]" value="<%=@booking.preared%>" id="booking[preared]">
+          <span class="red">*</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<div>
+
+<div class="list-box">
+  <h4 class="title">
+    <span class="ui-icon ui-icon-document"></span>
+    货品项
+    <div class="btn-box-t1 fr">
+            <button class="t1" type="button" onclick="addPro()">
+                <span>新增货品  </span>
+            </button>
+        </div>
+  </h4>
+
+  <table id="pro_list">
+    <tbody>
+      <tr class="goods-list-title">
+        <th>序 号</th>
+        <th>品名</th>
+        <th>型 号</th>
+        <th>数 量</th>
+        <th>单价</th>
+        <th>金 额</th>
+        <th>备注</th>
+      </tr>
+
+      <%if @booking.products.size >
+      0 %>
+       <% @i = 1%>
+      <% @booking.products.each do |p|%>
+       <tr>
+         <td><%=@i%></td>
+         <% @i +=1%>
+        <td>
+          <input type="text" style= "width:90%" class="w100 inp " name="product[][article_name]" value="<%=p.article_name%>" id="product[article_name]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][model]" value="<%=p.model%>" id="product[model]"></td>
+        <td>
+          <input type="text"  style= "width:90%" class="inp quantity" name="product[][quantity]" value="<%=p.quantity%>" id="product[quantity]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp unit_price" name="product[][unit_price]" value="<%=p.unit_price%>" id="product[unit_price]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp amount_total" name="product[][amount]" value="<%=p.amount%>" id="product[amount]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][note]" value="<%p.note%>" id="product[note]"></td>
+      </tr>
+      <%end%>
+      <%else%>
+      <% for i in  1.. 5%>
+      <tr>
+         <td><%=i%></td>
+        <td>
+          <input type="text" style= "width:90%" class="w100 inp " name="product[][article_name]" value="" id="product[article_name]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][model]" value="" id="product[model]"></td>
+        <td>
+          <input type="text"  style= "width:90%" class="inp quantity" name="product[][quantity]" value="" id="product[quantity]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp unit_price" name="product[][unit_price]" value="" id="product[unit_price]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp amount_total" name="product[][amount]" value="" id="product[amount]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][note]" value="" id="product[note]"></td>
+      </tr>
+      <%end%>
+      <%end%></tbody>
+  </table>
+</div>
+
+<div class="form-box-c2">
+
+  <table>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <button class="btn-t3" type="submit">确 定</button>
+          <button class="btn-t4" type="button" onclick="window.location='<%=bookings_path %>'">返回</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<% end %>
+</div>
+
+
+
+  <table id="temp_pro" style="display:none">
+<tr>
+         <td class="id_num"></td>
+        <td>
+          <input type="text" style= "width:90%" class="w100 inp " name="product[][article_name]" value="" id="product[article_name]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][model]" value="" id="product[model]"></td>
+        <td>
+          <input type="text"  style= "width:90%" class="inp quantity" name="product[][quantity]" value="" id="product[quantity]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp unit_price" name="product[][unit_price]" value="" id="product[unit_price]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp amount_total" name="product[][amount]" value="" id="product[amount]"></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][note]" value="" id="product[note]"></td>
+
+</table>
+
+<script type="text/javascript">
+
+$(".amount_total").click(function(){
+ quantity = $(this).parent().parent().find(".quantity").attr("value");
+ unit_price = $(this).parent().parent().find(".unit_price").attr("value");
+
+ if(quantity != ""  && unit_price != ""){
+  quantityInt = parseInt(quantity);
+  unit_priceDouble = parseFloat(unit_price);
+   if(quantityInt != null && unit_priceDouble!=null ){
+$(this).attr("value",quantityInt*unit_priceDouble)
+
+   }else{
+
+    alert("请正确填写数量和单价")
+   }
+
+
+ }else{
+  alert("请正确填写数量和单价")
+ }
+
+})
+
+
+
+<%if @booking.products.size >
+      0 %>
+pro_num = @booking.products.size
+
+<%else%>
+pro_num = 5
+<%end%>  
+function addPro(){
+
+$("#temp_pro .id_num").html(pro_num + 1 )
+html_var = $("#temp_pro").html()
+$("#pro_list").append(html_var);
+pro_num = pro_num +1 ;   
+
+} 
+
+
+$().ready(function() {
+$("#new_booking").validate();
+});
+
+jQuery.extend(jQuery.validator.messages, {
+        required: "必选字段",
+remote: "请修正该字段",
+email: "请输入正确格式的电子邮件",
+url: "请输入合法的网址",
+date: "请输入合法的日期",
+dateISO: "请输入合法的日期 (ISO).",
+number: "请输入合法的数字",
+digits: "只能输入整数",
+creditcard: "请输入合法的信用卡号",
+equalTo: "请再次输入相同的值",
+accept: "请输入拥有合法后缀名的字符串",
+maxlength: jQuery.validator.format("请输入一个长度最多是 {0} 的字符串"),
+minlength: jQuery.validator.format("请输入一个长度最少是 {0} 的字符串"),
+rangelength: jQuery.validator.format("请输入一个长度介于 {0} 和 {1} 之间的字符串"),
+range: jQuery.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+max: jQuery.validator.format("请输入一个最大为 {0} 的值"),
+min: jQuery.validator.format("请输入一个最小为 {0} 的值")
+});
+</script>

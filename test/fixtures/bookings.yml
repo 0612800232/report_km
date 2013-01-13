@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  attn_unit: MyString
+  recipients: MyString
+  tel: MyString
+  atten_status: MyString
+  add: MyString
+  date: MyString
+  check_mode: MyString
+  remittances: MyString
+  preared: MyString
+
+two:
+  attn_unit: MyString
+  recipients: MyString
+  tel: MyString
+  atten_status: MyString
+  add: MyString
+  date: MyString
+  check_mode: MyString
+  remittances: MyString
+  preared: MyString

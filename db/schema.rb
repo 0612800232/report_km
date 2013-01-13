@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617063906) do
+ActiveRecord::Schema.define(:version => 20130101160929) do
 
   create_table "adds", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,21 @@ ActiveRecord::Schema.define(:version => 20120617063906) do
     t.boolean  "is_index"
   end
 
+  create_table "bookings", :force => true do |t|
+    t.string   "attn_unit"
+    t.string   "recipients"
+    t.string   "tel"
+    t.string   "atten_status"
+    t.string   "add"
+    t.string   "date"
+    t.string   "check_mode"
+    t.string   "remittances"
+    t.string   "preared"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sub_total"
+  end
+
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
     t.string   "data_content_type"
@@ -79,7 +94,6 @@ ActiveRecord::Schema.define(:version => 20120617063906) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "page_temp_id"
   end
 
   create_table "events", :force => true do |t|
@@ -131,6 +145,25 @@ ActiveRecord::Schema.define(:version => 20120617063906) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pro_temps", :force => true do |t|
+    t.boolean  "status"
+    t.text     "temp_c"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "article_name"
+    t.string   "model"
+    t.integer  "quantity"
+    t.integer  "unit_price"
+    t.integer  "amount"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "booking_id"
   end
 
   create_table "question_bases", :force => true do |t|

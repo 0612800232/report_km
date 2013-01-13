@@ -1,0 +1,63 @@
+<div class="form-box ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
+      <a href="#tabs-1">运货单模板信息</a>
+    </li>
+  </ul>
+
+  <%= form_for(@pro_temp) do |f| %>
+  <% if @pro_temp.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@pro_temp.errors.count, "error") %>prohibited this booking from being saved:</h2>
+
+    <ul>
+      <% @pro_temp.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %></li>
+      <% end %></ul>
+  </div>
+  <% end %>
+  <div class="form-box-c2">
+    <table>
+      <tr>
+        <th>模板状态：</th>
+        <td>
+          <%= f.check_box :status %>
+          <span class="red">*</span>
+        </td>
+      </tr>
+      <tr>
+        <th>模板：</th>
+        <td>
+         <%= f.text_area    :temp_c %>
+          <span class="red">*</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td></td>
+        <td>
+          <button class="btn-t3" type="submit">确 定</button>
+          <button class="btn-t4" type="button" onclick="window.location='<%=bookings_path %>'">返回</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<div>
+
+
+
+  
+
+
+
+</div>
+
+<% end %>
+</div>

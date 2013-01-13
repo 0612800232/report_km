@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  article_name: MyString
+  model: MyString
+  quantity: 1
+  unit_price: 1
+  amount: 1
+  note: MyString
+
+two:
+  article_name: MyString
+  model: MyString
+  quantity: 1
+  unit_price: 1
+  amount: 1
+  note: MyString

@@ -1,0 +1,31 @@
+<div class="main-content">
+     <div class="main-title  mb10 mt10">
+            <h3 class="ion-t1">托运单打印模板列表</h3>
+            <div class="btn-box-t1 fr">
+            <button class="t1" type="button" onclick="window.location='<%=new_pro_temp_path %>'">
+                <span>新增托运单打印模板  </span>
+            </button>
+        </div>
+     </div>
+    <div class="clear"></div>
+    <div class="list-box">
+        <table>
+            <tr class="goods-list-title">
+                <th>模板ID</th>
+                <th>模板状态</th>
+                <th>操作</th>
+            </tr>
+              <% @pro_temps.each do |pro_temp| %>
+              <tr>
+                <td><%= pro_temp.id %></td>
+                <td><%= pro_temp.status %></td>
+                <td><%= link_to '预览', pro_temp %>
+                <%= link_to '编辑', edit_pro_temp_path(pro_temp) %>
+              <%= link_to '删除', pro_temp, :confirm => 'Are you sure?', :method => :delete %></td>
+              </tr>
+              <%end%>
+              </table>
+    </div>
+        </form>
+    
+</div>

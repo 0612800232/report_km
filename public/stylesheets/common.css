@@ -496,3 +496,23 @@ ul.pj-box .r div span {float:right; color:#000; line-height:20px;}
 .form-box-c5 .box-3{ background:url(../images/bg01.gif) -561px 10px no-repeat;}
 .form-box-c5 .btn{width:371px; height:60px; background-image:url(../images/btn4.png); background-repeat:no-repeat; cursor:pointer; border:0;margin-left:180px; margin-top:5px; margin-bottom:5px;}
 .form-box-c5 .btn span{ display:none; }
+
+label.required:before {
+	content:"*";
+	color:red;
+	font-family:"Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+}
+label.ok {
+	background:url("/images/valid.gif") no-repeat;
+	padding-left:16px;
+}
+label.error {
+	color:#d00;
+	text-transform:none;
+	margin-left:6px;
+}
+label.choice {
+	vertical-align:middle;
+	font-weight:normal;
+	text-transform:none;
+}

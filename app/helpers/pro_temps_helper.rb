@@ -1,0 +1,2 @@
+module ProTempsHelper
+end

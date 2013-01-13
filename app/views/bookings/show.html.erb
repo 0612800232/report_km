@@ -1,0 +1,101 @@
+<div class="main-content">
+    <!-- 标题 加右侧按钮 -->
+    <div class="main-title">
+        <h3 class="ion-t1">新建运货单</h3>
+    </div>
+    <div class="form-box ui-tabs ui-widget ui-widget-content ui-corner-all">
+  
+        
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
+                <a href="#tabs-1">运货单信息</a>
+            </li>
+        </ul>
+<div class="form-box-c2">
+            <table>
+               <tr>
+                    <th>收货单位：</th>
+                    <td><%=@booking.attn_unit%></td>
+                </tr>
+                 <tr>
+                    <th>收货单位地址：</th>
+                    <td><%=@booking.add%></td>
+                </tr>
+                 <tr>
+                    <th>收货人：</th>
+                    <td><%=@booking.recipients%></td>
+                </tr>
+                 <tr>
+                    <th>收货人电话：</th>
+                    <td><%=@booking.tel%></td>
+                </tr>
+                 <tr>
+                    <th>收货日期：</th>
+                    <td><%=@booking.date%></td>
+                </tr>
+                 <tr>
+                    <th>托运方式：</th>
+                    <td><%=@booking.attn_unit%></td>
+                </tr>
+                 <tr>
+                    <th>结款方式：</th>
+                    <td><%=@booking.remittances%></td>
+                </tr>
+                 <tr>
+                    <th>填单人：</th>
+                    <td><%=@booking.preared%></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <button class="btn-t4" type="button" onclick="window.location='<%=bookings_path %>'">返回</button>
+                        
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+
+        <div class="list-box">
+  <h4 class="title">
+    <span class="ui-icon ui-icon-document"></span>
+    货品项
+  </h4>
+
+  <table id="pro_list">
+    <tbody>
+      <tr class="goods-list-title">
+        <th>序 号</th>
+        <th>品名</th>
+        <th>型 号</th>
+        <th>数 量</th>
+        <th>单价</th>
+        <th>金 额</th>
+        <th>备注</th>
+      </tr>
+
+      <%if @booking.products.size > 0 %>
+      <% @i = 1%>
+      <% @booking.products.each do |p|%>
+       <tr>
+         <td><%=@i%></td>
+         <% @i +=1%>
+        <td>
+          <input type="text" style= "width:90%" class="w100 inp " name="product[][article_name]" value="<%=p.article_name%>" id="product[article_name]" readonly></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][model]" value="<%=p.model%>" id="product[model]" readonly></td>
+        <td>
+          <input type="text"  style= "width:90%" class="inp" name="product[][quantity]" value="<%=p.quantity%>" id="product[quantity]" readonly></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][unit_price]" value="<%=p.unit_price%>" id="product[unit_price]" readonly></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][amount]" value="<%=p.amount%>" id="product[amount]" readonly></td>
+        <td>
+          <input type="text" style= "width:90%" class="inp" name="product[][note]" value="<%p.note%>" id="product[note]" readonly></td>
+      </tr>
+      
+      <%end%>
+      <%end%></tbody>
+  </table>
+</div>
+  </div>
+</div>

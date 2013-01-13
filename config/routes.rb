@@ -1,6 +1,17 @@
 Huanhao::Application.routes.draw do
 
 
+  resources :pro_temps
+
+  resources :products
+
+
+  resources :bookings do
+      collection do
+        get :print
+      end
+  end
+
   resources :images_indices
 
   resources :question_result_details

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status:</b>
+  <%= @pro_temp.status %>
+</p>
+
+<p>
+  <b>Temp c:</b>
+  <%= @pro_temp.temp_c %>
+</p>
+
+
+<%= link_to 'Edit', edit_pro_temp_path(@pro_temp) %> |
+<%= link_to 'Back', pro_temps_path %>

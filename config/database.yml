@@ -1,7 +1,7 @@
 development:
       host: localhost
       adapter: mysql
-      database: report_test_dev
+      database: report_dev
       port: 3306
       username: root
       password: lee123
@@ -11,14 +11,14 @@ development:
 test:
       host: localhost
       adapter: mysql
-      database: report_test_test
+      database: report_test
       port: 3306
       username: root
       password: lee123
 production:
       host: localhost
       adapter: mysql
-      database: report_test_dev
+      database: report_dev
       port: 3306
       username: root
       password: lee123
